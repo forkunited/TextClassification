@@ -7,7 +7,7 @@ evaluation=Accuracy()
 
 gridSearchParameterValues=l2(.0625,.125,.25,.5,1,2,4,8)
 
-feature_s=NGramSentence(minFeatureOccurrence=5, n=1, cleanFn=DefaultCleanFn, tokenExtractor=SentenceTokenSpans)
+feature_s=NGramSentence(minFeatureOccurrence=10, n=1, cleanFn=DefaultCleanFn, tokenExtractor=SentenceTokenSpans)
 
 model=SVMCLN(n=1)
 {
