@@ -1,0 +1,17 @@
+randomSeed=1
+maxThreads=8
+trainOnDev=true
+errorExampleExtractor=SentenceTokenSpans
+
+evaluation=Accuracy()
+
+gridSearchParameterValues=l2(2,8,32,64)
+gridSearchParameterValues=l1(0,.000002,.000008,.000032)
+
+feature_s=NGramSentence(minFeatureOccurrence=5, n=1, cleanFn=DefaultCleanFn, tokenExtractor=SentenceTokenSpans)
+
+model=SVM(n=1)
+{
+	validLabels=comp.graphics, comp.os.ms-windows.misc, comp.sys.ibm.pc.hardware, comp.sys.mac.hardware, comp.windows.x, rec.autos, rec.motorcycles, rec.sport.baseball, rec.sport.hockey, sci.crypt, sci.electronics, sci.med, sci.space, misc.forsale, talk.politics.misc, talk.politics.guns, talk.politics.mideast, talk.religion.misc, alt.atheism, soc.religion.christian
+	trainingIterations=2
+}
