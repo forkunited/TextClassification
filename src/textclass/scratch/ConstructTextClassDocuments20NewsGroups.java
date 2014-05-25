@@ -23,7 +23,7 @@ public class ConstructTextClassDocuments20NewsGroups {
 		String inputPath = args[0];
 		String outputPath = args[1];
 		int seed = Integer.parseInt(args[2]);
-		String splitPath = (args.length > 3) ? args[3] : null;
+		String splitPath = (args.length > 3 && args[3].length() > 0) ? args[3] : null;
 		
 		Random random = new Random(seed);
 		
