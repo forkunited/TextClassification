@@ -14,7 +14,7 @@ import ark.data.annotation.Datum.Tools;
 import ark.experiment.ExperimentGST;
 import ark.util.OutputWriter;
 
-public class GSTTextClassDocumentCategory {
+public class ExperimentGSTTextClassDocumentCategory {
 	private static int textClassDocumentId;
 	
 	public static void main(String[] args) {
