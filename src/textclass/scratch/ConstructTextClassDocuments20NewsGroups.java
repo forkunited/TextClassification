@@ -40,7 +40,8 @@ public class ConstructTextClassDocuments20NewsGroups {
 				continue;
 			String category = categoryDirectory.getName();
 			File[] documentTextFiles = categoryDirectory.listFiles();
-			for (File documentTextFile : documentTextFiles) {				
+			for (File documentTextFile : documentTextFiles) {
+				System.out.println("Loading document text " + documentTextFile.getAbsolutePath() + "...");
 				String documentName = documentTextFile.getName();
 				String documentText = readFileText(documentTextFile);
 				Map<String, String[]> documentMetaData = new HashMap<String, String[]>();
@@ -49,6 +50,8 @@ public class ConstructTextClassDocuments20NewsGroups {
 				documents.add(document);
 			}
 		}
+		
+		System.out.println("Outputting documents...");
 		
 		if (splitPath != null)
 			documents = MathUtil.randomPermutation(random, documents);
