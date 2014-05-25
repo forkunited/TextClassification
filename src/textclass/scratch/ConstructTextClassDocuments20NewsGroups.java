@@ -46,7 +46,7 @@ public class ConstructTextClassDocuments20NewsGroups {
 				String documentText = readFileText(documentTextFile);
 				Map<String, String[]> documentMetaData = new HashMap<String, String[]>();
 				documentMetaData.put("category", new String[]{ category });
-				TextClassDocument document = new TextClassDocument(documentName, documentText, documentMetaData, Language.English, annotator);
+				TextClassDocument document = new TextClassDocument(category + "_" + documentName, documentText, documentMetaData, Language.English, annotator);
 				documents.add(document);
 			}
 		}
