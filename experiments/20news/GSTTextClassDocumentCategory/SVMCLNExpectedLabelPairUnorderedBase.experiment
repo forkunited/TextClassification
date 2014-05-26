@@ -5,13 +5,13 @@ errorExampleExtractor=SentenceTokenSpans
 
 evaluation=Accuracy()
 
-gridSearchParameterValues=l2(.0625,.125,.25,.5,1,2,4,8)
+gridSearchParameterValues=l2(.000000000001,.00000000001,.0000000001,.000000001,.00000001,.0000001,.000001,.00001)
 
 feature_s=NGramSentence(minFeatureOccurrence=10, n=1, cleanFn=DefaultCleanFn, tokenExtractor=SentenceTokenSpans)
 
-model=SVMCLN(n=1)
+model=SVMCLN()
 {
 	validLabels=comp.graphics, comp.os.ms-windows.misc, comp.sys.ibm.pc.hardware, comp.sys.mac.hardware, comp.windows.x, rec.autos, rec.motorcycles, rec.sport.baseball, rec.sport.hockey, sci.crypt, sci.electronics, sci.med, sci.space, misc.forsale, talk.politics.misc, talk.politics.guns, talk.politics.mideast, talk.religion.misc, alt.atheism, soc.religion.christian
-	trainingIterations=21
+	trainingIterations=1001
 	factoredCost=LabelPairUnordered(c=1, norm=EXPECTED)
 }
