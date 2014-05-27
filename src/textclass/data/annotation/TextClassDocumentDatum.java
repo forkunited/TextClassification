@@ -17,12 +17,55 @@ public class TextClassDocumentDatum<L> extends Datum<L> {
 		return this.textClassDocument;
 	}
 	
-	public static Tools<String> getCategoryTools(DataTools dataTools) {
-		Tools<String> tools = new Tools<String>(dataTools) {
+	public static Tools<TextClassDocumentCategory> getCategoryTools(DataTools dataTools) {
+		Tools<TextClassDocumentCategory> tools = new Tools<TextClassDocumentCategory>(dataTools) {
 			@Override
-			public String labelFromString(String str) {
-				return str;
+			public TextClassDocumentCategory labelFromString(String str) {
+				if (str.equals("comp.graphics"))
+					return TextClassDocumentCategory.COMP_GRAPHICS;
+				else if (str.equals("comp.os.ms-windows.misc"))
+					return TextClassDocumentCategory.COMP_OS_MS_WINDOWS_MISC;
+				else if (str.equals("comp.sys.ibm.pc.hardware"))
+					return TextClassDocumentCategory.COMP_SYS_IBM_PC_HARDWARE;
+				else if (str.equals("comp.sys.mac.hardware"))
+					return TextClassDocumentCategory.COMP_SYS_MAC_HARDWARE;
+				else if (str.equals("comp.windows.x"))
+					return TextClassDocumentCategory.COMP_WINDOWS_X;
+				else if (str.equals("rec.autos"))
+					return TextClassDocumentCategory.REC_AUTOS;
+				else if (str.equals("rec.motorcycles"))
+					return TextClassDocumentCategory.REC_MOTORCYCLES;
+				else if (str.equals("rec.sport.baseball"))
+					return TextClassDocumentCategory.REC_SPORT_BASEBALL;
+				else if (str.equals("rec.sport.hockey"))
+					return TextClassDocumentCategory.REC_SPORT_HOCKEY;
+				else if (str.equals("sci.crypt"))
+					return TextClassDocumentCategory.SCI_CRYPT;
+				else if (str.equals("sci.electronics"))
+					return TextClassDocumentCategory.SCI_ELECTRONICS;
+				else if (str.equals("sci.med"))
+					return TextClassDocumentCategory.SCI_MED;
+				else if (str.equals("sci.space"))
+					return TextClassDocumentCategory.SCI_SPACE;
+				else if (str.equals("misc.forsale"))
+					return TextClassDocumentCategory.MISC_FORSALE;
+				else if (str.equals("talk.politics.misc"))
+					return TextClassDocumentCategory.TALK_POLITICS_MISC;
+				else if (str.equals("talk.politics.guns"))
+					return TextClassDocumentCategory.TALK_POLITICS_GUNS;
+				else if (str.equals("talk.politics.mideast"))
+					return TextClassDocumentCategory.TALK_POLITICS_MIDEAST;
+				else if (str.equals("talk.religion.misc"))
+					return TextClassDocumentCategory.TALK_RELIGION_MISC;
+				else if (str.equals("alt.atheism"))
+					return TextClassDocumentCategory.ALT_ATHEISM;
+				else if (str.equals("soc.religion.christian"))
+					return TextClassDocumentCategory.TALK_RELIGION_MISC;
+				else
+					return TextClassDocumentCategory.valueOf(str);
 			}
+			
+			
 		};
 		
 		return tools;

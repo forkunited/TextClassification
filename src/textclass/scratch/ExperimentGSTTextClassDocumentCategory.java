@@ -5,6 +5,7 @@ import java.util.List;
 
 import textclass.data.TextClassDataTools;
 import textclass.data.annotation.TextClassDocument;
+import textclass.data.annotation.TextClassDocumentCategory;
 import textclass.data.annotation.TextClassDocumentDatum;
 import textclass.data.annotation.TextClassDocumentSet;
 import textclass.util.TextClassProperties;
@@ -36,30 +37,30 @@ public class ExperimentGSTTextClassDocumentCategory {
 		TextClassDataTools dataTools = new TextClassDataTools(output, properties);
 		dataTools.addToParameterEnvironment("DOCUMENT_SET", documentSetName);
 		
-		Tools<TextClassDocumentDatum<String>, String> datumTools = TextClassDocumentDatum.getCategoryTools(dataTools);
+		Tools<TextClassDocumentDatum<TextClassDocumentCategory>, TextClassDocumentCategory> datumTools = TextClassDocumentDatum.getCategoryTools(dataTools);
 		
 		String documentSetPath = (new File(properties.getTextDocumentDataDirPath(), documentSetName)).getAbsolutePath();
-		DataSet<TextClassDocumentDatum<String>, String> trainData = loadDataFromDirectory(documentSetPath + "/train", datumTools);
-		DataSet<TextClassDocumentDatum<String>, String> devData = loadDataFromDirectory(documentSetPath + "/dev", datumTools);
-		DataSet<TextClassDocumentDatum<String>, String> testData = null;
+		DataSet<TextClassDocumentDatum<TextClassDocumentCategory>, TextClassDocumentCategory> trainData = loadDataFromDirectory(documentSetPath + "/train", datumTools);
+		DataSet<TextClassDocumentDatum<TextClassDocumentCategory>, TextClassDocumentCategory> devData = loadDataFromDirectory(documentSetPath + "/dev", datumTools);
+		DataSet<TextClassDocumentDatum<TextClassDocumentCategory>, TextClassDocumentCategory> testData = null;
 		if (useTestData)
 			testData = loadDataFromDirectory(documentSetPath + "/test", datumTools);
 		
-		ExperimentGST<TextClassDocumentDatum<String>, String> experiment = 
-				new ExperimentGST<TextClassDocumentDatum<String>, String>(experimentName, experimentInputPath, trainData, devData, testData);
+		ExperimentGST<TextClassDocumentDatum<TextClassDocumentCategory>, TextClassDocumentCategory> experiment = 
+				new ExperimentGST<TextClassDocumentDatum<TextClassDocumentCategory>, TextClassDocumentCategory>(experimentName, experimentInputPath, trainData, devData, testData);
 	
 		if (!experiment.run())
 			output.debugWriteln("Error: Experiment run failed.");
 	}
 	
-	private static DataSet<TextClassDocumentDatum<String>, String> loadDataFromDirectory(String path, Tools<TextClassDocumentDatum<String>, String> datumTools) {
+	private static DataSet<TextClassDocumentDatum<TextClassDocumentCategory>, TextClassDocumentCategory> loadDataFromDirectory(String path, Tools<TextClassDocumentDatum<TextClassDocumentCategory>, TextClassDocumentCategory> datumTools) {
 		TextClassDocumentSet documentSet = TextClassDocumentSet.loadFromJSONDirectory(path);
-		DataSet<TextClassDocumentDatum<String>, String> data = new DataSet<TextClassDocumentDatum<String>, String>(datumTools, null);
+		DataSet<TextClassDocumentDatum<TextClassDocumentCategory>, TextClassDocumentCategory> data = new DataSet<TextClassDocumentDatum<TextClassDocumentCategory>, TextClassDocumentCategory>(datumTools, null);
 		
 		List<TextClassDocument> documents = documentSet.getDocuments();
 		for (TextClassDocument document : documents) {
-			TextClassDocumentDatum<String> tlinkDatum = new TextClassDocumentDatum<String>(textClassDocumentId, document, document.getMetaData("category")[0]);
-			data.add(tlinkDatum);				
+			TextClassDocumentDatum<TextClassDocumentCategory> datum = new TextClassDocumentDatum<TextClassDocumentCategory>(textClassDocumentId, document, datumTools.labelFromString(document.getMetaData("category")[0]));
+			data.add(datum);				
 			textClassDocumentId++;
 		}
 		
