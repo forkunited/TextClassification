@@ -4,10 +4,12 @@ trainOnDev=true
 errorExampleExtractor=SentenceTokenSpans
 
 evaluation=Accuracy()
+evaluation=Accuracy(labelMapping=SecondLevel)
+evaluation=Accuracy(labelMapping=FirstLevel)
 
 gridSearchParameterValues=l2(.001,.01,.1, 1, 10, 100, 1000, 10000)
 
-feature_s=NGramSentence(minFeatureOccurrence=10, n=1, cleanFn=DefaultCleanFn, tokenExtractor=SentenceTokenSpans)
+feature_s=NGramSentence(minFeatureOccurrence=50, n=1, cleanFn=DefaultCleanFn, tokenExtractor=SentenceTokenSpans)
 
 model=SVMCLN()
 {
