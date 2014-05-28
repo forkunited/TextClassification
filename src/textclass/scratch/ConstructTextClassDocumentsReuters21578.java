@@ -160,6 +160,9 @@ public class ConstructTextClassDocumentsReuters21578 {
 				}
 			}
 			
+			if (documentText == null)
+				System.out.println(newIdAttribute + " has no text?");
+			
 			TextClassDocument document = new TextClassDocument(newIdAttribute, documentText, metaData, Language.English, annotator);
 			documents.add(document);
 		}
