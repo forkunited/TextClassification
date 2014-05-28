@@ -43,6 +43,8 @@ public class ConstructTextClassDocumentsReuters21578 {
 		File inputDirectory = new File(inputPath);
 		File[] directoryFiles = inputDirectory.listFiles();
 		for (File directoryFile : directoryFiles) {
+			if (!directoryFile.getName().endsWith(".sgm"))
+				continue;
 			System.out.println("Loading documents from " + directoryFile.getAbsolutePath() + "...");
 			documents.addAll(constructDocumentsFromFile(directoryFile, annotator));
 		}
@@ -186,7 +188,7 @@ public class ConstructTextClassDocumentsReuters21578 {
 		StringBuilder documentText = new StringBuilder();
 		
 		try {
-			documentText.append(documentTextReader.readLine()).append("\n");
+			documentTextReader.readLine(); // Skip the header
 			documentText.append("<ROOT>").append("\n"); // Reuters documents are missing root element
 			String line = null;
 			
