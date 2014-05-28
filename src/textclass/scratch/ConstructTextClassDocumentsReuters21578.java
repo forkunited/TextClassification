@@ -173,6 +173,7 @@ public class ConstructTextClassDocumentsReuters21578 {
 		SAXBuilder builder = new SAXBuilder();
 		Document document = null;
 		try {
+			
 			document = builder.build(new StringReader(fileText));
 		} catch (JDOMException e) {
 			e.printStackTrace();
@@ -193,7 +194,7 @@ public class ConstructTextClassDocumentsReuters21578 {
 			String line = null;
 			
 			while ((line = documentTextReader.readLine()) != null) {
-				documentText.append(line).append("\n");
+				documentText.append(line.replaceAll("&#", "")).append("\n");
 			}
 			documentText.append("</ROOT>").append("\n");
 		} catch (IOException e) {
