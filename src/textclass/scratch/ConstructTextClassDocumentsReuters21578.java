@@ -90,7 +90,7 @@ public class ConstructTextClassDocumentsReuters21578 {
 		List<Element> documentElements = (List<Element>)fileElement.getChildren("REUTERS");
 		for (Element documentElement : documentElements) {
 			Map<String, String[]> metaData = new HashMap<String, String[]>();
-			String documentText = null;
+			String documentText = "";
 			
 			String topicsAttribute = documentElement.getAttributeValue("TOPICS");
 			String lewisSplitAttribute = documentElement.getAttributeValue("LEWISSPLIT");
@@ -154,15 +154,13 @@ public class ConstructTextClassDocumentsReuters21578 {
 			List<Element> textChildren = (List<Element>)textElement.getChildren();
 			for (Element textChild : textChildren) {
 				if (textChild.getName().equals("BODY")) {
-					documentText = textChild.getText();
+					documentText += textChild.getText();
 				} else {
-					metaData.put(textChild.getName(), new String[] { textChild.getText() });
+					documentText += textChild.getName() + ": " + textChild.getText() + ".\n";
 				}
 			}
 			
-			if (documentText == null)
-				System.out.println(newIdAttribute + " has no text?");
-			
+			System.out.println("Parsing document " + newIdAttribute + "...");
 			TextClassDocument document = new TextClassDocument(newIdAttribute, documentText, metaData, Language.English, annotator);
 			documents.add(document);
 		}
