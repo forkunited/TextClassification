@@ -120,7 +120,7 @@ public enum TextClassDocumentTopic {
 	SOY_OIL,        // soy-oil
 	SOYBEAN,        // soybean
 	STG,            // stg
-	STRATEGIC_MEAL, // strategic-metal
+	STRATEGIC_METAL, // strategic-metal
 	SUGAR,          // sugar
 	SUN_MEAL,       // sun-meal
 	SUN_OIL,        // sun-oil	
