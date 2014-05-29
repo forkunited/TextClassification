@@ -178,6 +178,85 @@ public class TextClassDocumentDatum<L> extends Datum<L> {
 		return tools;
 	}
 	
+	public static Tools<TextClassDocumentTopic> getTopicTools(DataTools dataTools) {
+		Tools<TextClassDocumentTopic> tools = new Tools<TextClassDocumentTopic>(dataTools) {
+			@Override
+			public TextClassDocumentTopic labelFromString(String str) {
+				return TextClassDocumentTopic.valueOf(str.toUpperCase().replace("-", "_"));
+			}
+		};
+		
+		tools.addLabelMapping(new LabelMapping<TextClassDocumentTopic>() {
+			@Override
+			public String toString() {
+				return "First";
+			}
+			
+			@Override
+			public TextClassDocumentTopic map(TextClassDocumentTopic label) {
+				String labelStr = label.toString();
+				int underscoreIndex = labelStr.indexOf("_");
+				if (underscoreIndex < 0)
+					return label;
+				
+				String first = labelStr.substring(0, underscoreIndex);
+				if (first.equals("CASTOR"))
+					return TextClassDocumentTopic.CASTOR_MEAL;
+				else if (first.equals("COCONUT"))
+					return TextClassDocumentTopic.COCONUT;
+				else if (first.equals("CORN"))
+					return TextClassDocumentTopic.CORN;
+				else if (first.equals("GROUNDNUT"))
+					return TextClassDocumentTopic.GROUNDNUT;
+				else if (first.equals("LIN"))
+					return TextClassDocumentTopic.LIN_MEAL;
+				else if (first.equals("MONEY"))
+					return TextClassDocumentTopic.MONEY_FX;
+				else if (first.equals("PALM"))
+					return TextClassDocumentTopic.PALM_MEAL;
+				else if (first.equals("RAPE"))
+					return TextClassDocumentTopic.RAPE_MEAL;
+				else if (first.equals("SOY"))
+					return TextClassDocumentTopic.SOY_MEAL;
+				else if (first.equals("SUN"))
+					return TextClassDocumentTopic.SUN_MEAL;
+				else if (first.equals("TUNG"))
+					return TextClassDocumentTopic.TUNG;
+				else
+					return label;
+			}
+		});
+		
+		tools.addLabelMapping(new LabelMapping<TextClassDocumentTopic>() {
+			@Override
+			public String toString() {
+				return "Second";
+			}
+			
+			@Override
+			public TextClassDocumentTopic map(TextClassDocumentTopic label) {
+				String labelStr = label.toString();
+				int underscoreIndex = labelStr.indexOf("_");
+				if (underscoreIndex < 0)
+					return label;
+				
+				String second = labelStr.substring(underscoreIndex);
+				if (second.equals("MEAL"))
+					return TextClassDocumentTopic.CASTOR_MEAL;
+				else if (second.equals("OIL"))
+					return TextClassDocumentTopic.CASTOR_OIL;
+				else if (second.equals("CAKE"))
+					return TextClassDocumentTopic.COPRA_CAKE;
+				else if (second.equals("CATTLE"))
+					return TextClassDocumentTopic.F_CATTLE;
+				else
+					return label;
+			}
+		});
+		
+		return tools;
+	}
+	
 	private static abstract class Tools<L> extends Datum.Tools<TextClassDocumentDatum<L>, L> {
 		public Tools(DataTools dataTools) {
 			super(dataTools);
