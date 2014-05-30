@@ -1,0 +1,17 @@
+randomSeed=1
+maxThreads=8
+trainOnDev=true
+errorExampleExtractor=SentenceTokenSpans
+
+evaluation=Accuracy()
+
+gridSearchParameterValues=l2(.001,.005,.01,.05,.1,.5,1,5)
+
+feature_s=NGramSentence(scale=NORMALIZED_LOG, minFeatureOccurrence=2, n=1, cleanFn=TextClassCleanFn, tokenExtractor=SentenceTokenSpans)
+
+model=SVMCLN()
+{
+	validLabels=acq,alum,bop,carcass,cocoa,coffee,copper,cotton,cpi,cpu,crude,dlr,earn,fuel,gas,gnp,gold,grain,heat,housing,income,instal-debt,interest,ipi,iron-steel,jet,jobs,lead,lei,livestock,lumber,meal-feed,money-fx,money-supply,nat-gas,nickel,orange,pet-chem,platinum,potato,reserves,retail,rubber,ship,strategic-metal,sugar,tea,tin,trade,veg-oil,wpi,zinc
+	trainingIterations=101
+	factoredCost=LabelPair(c=1, norm=EXPECTED)
+}
