@@ -7,9 +7,9 @@ evaluation=Accuracy()
 evaluation=Accuracy(labelMapping=SecondLevel)
 evaluation=Accuracy(labelMapping=FirstLevel)
 
-gridSearchParameterValues=l2(.0000005,.000001,.000005,.00001,.00005,.0001,.0005,.001,.005,.01,.05,.1,.5,1,5,10)
+gridSearchParameterValues=l2(.001,.005,.01,.05,.1,.5,1,5)
 
-feature_s=NGramSentence(minFeatureOccurrence=10, n=1, cleanFn=DefaultCleanFn, tokenExtractor=SentenceTokenSpans)
+feature_s=NGramSentence(scale=NORMALIZED_LOG, minFeatureOccurrence=2, n=1, cleanFn=TextClassCleanFn, tokenExtractor=SentenceTokenSpans)
 
 model=SVM()
 {
