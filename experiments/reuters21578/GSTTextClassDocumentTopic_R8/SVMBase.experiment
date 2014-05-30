@@ -1,0 +1,16 @@
+randomSeed=1
+maxThreads=8
+trainOnDev=true
+errorExampleExtractor=SentenceTokenSpans
+
+evaluation=Accuracy()
+
+gridSearchParameterValues=l2(.001,.005,.01,.05,.1,.5,1,5)
+
+feature_s=NGramSentence(scale=NORMALIZED_LOG, minFeatureOccurrence=2, n=1, cleanFn=TextClassCleanFn, tokenExtractor=SentenceTokenSpans)
+
+model=SVM()
+{
+	validLabels=acq, crude, earn, grain, interest, money-fx, ship, trade
+	trainingIterations=101
+}
