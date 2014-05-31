@@ -9,7 +9,7 @@ evaluation=Accuracy(labelMapping=FirstLevel)
 
 gridSearchParameterValues=l2(.000005,.00001,.00005,.0001,.0005,.001,.005,.01)
 
-feature_s=NGramSentence(scale=NORMALIZED_LOG, minFeatureOccurrence=2, n=1, cleanFn=TextClassCleanFn, tokenExtractor=SentenceTokenSpans)
+feature_s=NGramSentence(scale=NORMALIZED_LOG, minFeatureOccurrence=1, n=1, cleanFn=TextClassCleanFn, tokenExtractor=SentenceTokenSpans)
 
 model=SVM()
 {

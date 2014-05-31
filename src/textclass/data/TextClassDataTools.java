@@ -22,15 +22,16 @@ public class TextClassDataTools extends DataTools {
 			public String transform(String str) {
 				str = str.trim();
 				
-				if (str.equals("$") || str.equals("&") || str.equals("+") || str.equals("@"))
-					return str; // Keep these symbols... differs from http://qwone.com/~jason/writing/loocv.pdf
+				//if (str.equals("$") || str.equals("&") || str.equals("+") || str.equals("@"))
+				//	return str; // Keep these symbols... differs from http://qwone.com/~jason/writing/loocv.pdf
 				
 				if (str.length() >= 25)
 					return "";
 				
 				str = str.toLowerCase()
 						.replaceAll("[\\W&&[^\\s]]+", "") // replaces all non-alpha-numeric (differs from http://qwone.com/~jason/writing/loocv.pdf)
-						.replaceAll("\\d+.*", "[D]"); // replace numbers
+						.replaceAll("_", "")
+						.replaceAll("\\d+.*", ""); // replace numbers
 				
 				return str;
 			}
