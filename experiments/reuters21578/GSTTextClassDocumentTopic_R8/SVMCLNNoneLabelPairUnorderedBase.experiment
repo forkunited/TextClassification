@@ -5,7 +5,7 @@ errorExampleExtractor=SentenceTokenSpans
 
 evaluation=Accuracy()
 
-gridSearchParameterValues=l2(.001,.005,.01,.05,.1,.5,1,5)
+gridSearchParameterValues=l2(.00005,.0001,.0005,.001,.005,.01,.05,.1)
 
 feature_s=NGramSentence(scale=NORMALIZED_LOG, minFeatureOccurrence=2, n=1, cleanFn=TextClassCleanFn, tokenExtractor=SentenceTokenSpans)
 
