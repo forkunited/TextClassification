@@ -1,5 +1,5 @@
 randomSeed=1
-maxThreads=8
+maxThreads=16
 trainOnDev=true
 errorExampleExtractor=SentenceTokenSpans
 
