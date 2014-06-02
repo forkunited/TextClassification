@@ -1,0 +1,17 @@
+randomSeed=1
+maxThreads=16
+trainOnDev=true
+errorExampleExtractor=SentenceTokenSpans
+
+evaluation=Accuracy()
+
+gridSearchParameterValues=l2(.000001,.000005,.00001,.00005,.0001,.0005,.001,.005,.01,.05,.1,.5,1,5,10,50)
+
+feature_s=NGramSentence(scale=NORMALIZED_LOG, minFeatureOccurrence=1, n=1, cleanFn=TextClassCleanFn, tokenExtractor=SentenceTokenSpans)
+
+model=SVMCLN()
+{
+	validLabels=acq,alum,bop,carcass,cocoa,coffee,copper,cotton,cpi,cpu,crude,dlr,earn,fuel,gas,gnp,gold,grain,heat,housing,income,instal-debt,interest,ipi,iron-steel,jet,jobs,lead,lei,livestock,lumber,meal-feed,money-fx,money-supply,nat-gas,nickel,orange,pet-chem,platinum,potato,reserves,retail,rubber,ship,strategic-metal,sugar,tea,tin,trade,veg-oil,wpi,zinc
+	trainingIterations=151
+	factoredCost=LabelPairUnordered(c=1, norm=MODEL, modelType=SVM, modelPath=ExperimentOutputPath, modelName=reuters21578/GSTTextClassDocumentTopic_R52/SVMBase.model.out)
+}
