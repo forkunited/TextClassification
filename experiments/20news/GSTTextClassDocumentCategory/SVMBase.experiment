@@ -10,7 +10,7 @@ evaluation=Accuracy(labelMapping=Clusters)
 
 gridSearchParameterValues=l2(.000001,.000005,.00001,.00005,.0001,.0005,.001,.005,.01,.05,.1,.5,1,5,10,50)
 
-feature_s=NGramSentence(scale=NORMALIZED_TFIDF, minFeatureOccurrence=1, n=1, cleanFn=TextClassCleanFn, tokenExtractor=SentenceTokenSpans)
+feature_s=NGramSentence(scale=NORMALIZED_LOG, minFeatureOccurrence=50, n=1, cleanFn=TextClassCleanFn, tokenExtractor=SentenceTokenSpans)
 
 model=SVM()
 {
