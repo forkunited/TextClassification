@@ -61,7 +61,7 @@ public class TextClassDocumentDatum<L> extends Datum<L> {
 				else if (str.equals("alt.atheism"))
 					return TextClassDocumentCategory.ALT_ATHEISM;
 				else if (str.equals("soc.religion.christian"))
-					return TextClassDocumentCategory.SOC_RELIGION_CHRISTIAN;
+					return TextClassDocumentCategory.TALK_RELIGION_MISC;
 				else
 					return TextClassDocumentCategory.valueOf(str);
 			}
