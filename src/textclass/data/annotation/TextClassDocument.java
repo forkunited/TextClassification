@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.jdom.Element;
-
 import ark.model.annotator.nlp.NLPAnnotator;
 import ark.data.annotation.Language;
 import ark.data.annotation.DocumentInMemory;
@@ -17,15 +15,11 @@ public class TextClassDocument extends DocumentInMemory {
 	private Map<String, String[]> metaData;
 	
 	public TextClassDocument(JSONObject json) {
-		fromJSON(json);
+		super(json);
 	}
-	
-	public TextClassDocument(Element element) {
-		fromXML(element);
-	}
-	
-	public TextClassDocument(String path, StorageType storageType) {
-		super(path, storageType);
+
+	public TextClassDocument(String path) {
+		super(path);
 	}
 	
 	public TextClassDocument(String name, String text, Map<String, String[]> metaData, Language language, NLPAnnotator annotator) {
@@ -59,10 +53,6 @@ public class TextClassDocument extends DocumentInMemory {
 		return json;
 	}
 	
-	public Element toXML() {
-		throw new UnsupportedOperationException();
-	}
-	
 	protected boolean fromJSON(JSONObject json) {
 		if (!super.fromJSON(json))
 			return false;
@@ -81,9 +71,5 @@ public class TextClassDocument extends DocumentInMemory {
 		}
 	
 		return true;
-	}
-	
-	protected boolean fromXML(Element element) {
-		throw new UnsupportedOperationException();
 	}
 }

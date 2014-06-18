@@ -1,5 +1,6 @@
 package textclass.data.annotation;
 
+import cost.data.annotation.CostDatumTools;
 import ark.data.DataTools;
 import ark.data.annotation.Datum;
 import ark.data.annotation.Datum.Tools.LabelMapping;
@@ -310,7 +311,7 @@ public class TextClassDocumentDatum<L> extends Datum<L> {
 		return tools;
 	}
 	
-	private static abstract class Tools<L> extends Datum.Tools<TextClassDocumentDatum<L>, L> {
+	private static abstract class Tools<L> extends CostDatumTools<TextClassDocumentDatum<L>, L> {
 		public Tools(DataTools dataTools) {
 			super(dataTools);
 			

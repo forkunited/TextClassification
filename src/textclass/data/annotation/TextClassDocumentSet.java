@@ -7,8 +7,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import ark.data.annotation.DocumentInMemory;
-
 public class TextClassDocumentSet {
 	private List<TextClassDocument> documents;
 	
@@ -64,7 +62,7 @@ public class TextClassDocumentSet {
 			
 			for (File file : tempFiles) {
 				System.out.println("Loading document " + file.getName());
-				documentSet.addDocument(new TextClassDocument(file.getAbsolutePath(), DocumentInMemory.StorageType.JSON));
+				documentSet.addDocument(new TextClassDocument(file.getAbsolutePath()));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
