@@ -15,6 +15,6 @@ feature_s=NGramSentence(scale=NORMALIZED_TFIDF, minFeatureOccurrence=1, n=1, cle
 model=SVMCLN()
 {
 	validLabels=comp.graphics, comp.os.ms-windows.misc, comp.sys.ibm.pc.hardware, comp.sys.mac.hardware, comp.windows.x, rec.autos, rec.motorcycles, rec.sport.baseball, rec.sport.hockey, sci.crypt, sci.electronics, sci.med, sci.space, misc.forsale, talk.politics.misc, talk.politics.guns, talk.politics.mideast, talk.religion.misc, alt.atheism, soc.religion.christian
-	trainingIterations=11
+	trainingIterations=51
 	factoredCost=LabelPair(c=1, norm=NONE)
 }
