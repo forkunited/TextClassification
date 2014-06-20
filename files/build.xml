@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="TextClassification">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../../Program Files/eclipse"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    <path id="TextClassification.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="[lib directory]/ark-water-0.jar"/>
+        <pathelement location="[lib directory]/cost.jar"/>
+        <pathelement location="[lib directory]/jdom.jar"/>
+        <pathelement location="[lib directory]/json-lib-2.4-jdk15.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="TextClassification.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="ConstructTextClassDocuments20NewsGroups">
+        <java classname="textclass.scratch.ConstructTextClassDocuments20NewsGroups" failonerror="true" fork="yes">
+	  <jvmarg line="-Xmx2g -XX:+UseParallelGC -XX:ParallelGCThreads=4 -XX:ConcGCThreads=4"/>
+	  <arg value="${inputPath}"/>
+	  <arg value="${outputPath}"/>
+	  <arg value="${seed}"/>
+	  <arg value="${splitPath}"/>
+          <classpath refid="TextClassification.classpath"/>
+	</java>
+    </target>
+    <target name="ConstructTextClassDocumentsReuters21578">
+        <java classname="textclass.scratch.ConstructTextClassDocumentsReuters21578" failonerror="true" fork="yes">
+          <jvmarg line="-Xmx2g -XX:+UseParallelGC -XX:ParallelGCThreads=4 -XX:ConcGCThreads=4"/>
+          <arg value="${inputPath}"/>
+          <arg value="${trainOutputPath}"/>
+          <arg value="${devOutputPath}"/>
+          <arg value="${testOutputPath}"/>
+          <arg value="${seed}"/>
+          <classpath refid="TextClassification.classpath"/>
+        </java>
+    </target>
+    <target name="ExperimentGSTTextClassDocumentCategory">
+        <java classname="textclass.scratch.ExperimentGSTTextClassDocumentCategory" failonerror="true" fork="yes">
+          <jvmarg line="-Xmx6g -XX:+UseParallelGC -XX:ParallelGCThreads=4 -XX:ConcGCThreads=4"/>
+          <arg value="${experimentName}"/>
+          <arg value="${documentSetName}"/>
+          <arg value="${useTestData}"/>
+          <classpath refid="TextClassification.classpath"/>
+        </java>
+    </target>
+    <target name="ExperimentGSTTextClassDocumentTopic">
+        <java classname="textclass.scratch.ExperimentGSTTextClassDocumentTopic" failonerror="true" fork="yes">
+          <jvmarg line="-Xmx3g -XX:+UseParallelGC -XX:ParallelGCThreads=4 -XX:ConcGCThreads=4"/>
+          <arg value="${experimentName}"/>
+          <arg value="${documentSetName}"/>
+          <arg value="${useTestData}"/>
+	  <arg value="${validTopicsId}"/>
+          <classpath refid="TextClassification.classpath"/>
+        </java>
+    </target>
+</project>
