@@ -7,6 +7,14 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * TextClassDocumentSet represents a set of NLP annotated
+ * text classification documents that can be loaded from 
+ * or saved to disk
+ * 
+ * @author Bill McDowell
+ * 
+ */
 public class TextClassDocumentSet {
 	private List<TextClassDocument> documents;
 	

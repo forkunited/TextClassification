@@ -18,6 +18,17 @@ import ark.util.MathUtil;
 import textclass.data.annotation.TextClassDocument;
 import textclass.data.annotation.TextClassDocumentSet;
 
+/**
+ * 
+ * ConstructTextClassDocuments20NewsGroups constructs JSON serialized
+ * version of the 20-newsgroups text classification data set 
+ * (see http://qwone.com/~jason/20Newsgroups/)
+ * that can be loaded through textclass.data.annotation.TextClassDocumentSet
+ * and textclass.data.annotation.TextClassDocument.
+ * 
+ * @author Bill McDowell
+ * 
+ */
 public class ConstructTextClassDocuments20NewsGroups {
 	public static void main(String[] args) {
 		String inputPath = args[0];

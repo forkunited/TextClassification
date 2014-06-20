@@ -11,6 +11,15 @@ import ark.data.annotation.DocumentInMemory;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+/**
+ * TextClassDocument represents a single text-classification document.
+ * The document can consist of plain-text, NLP annotations (see 
+ * ark.data.DocumentInMemory), and meta-data (e.g. type, author, 
+ * category, topic, etc).
+ * 
+ * @author Bill McDowell
+ *
+ */
 public class TextClassDocument extends DocumentInMemory {
 	private Map<String, String[]> metaData;
 	

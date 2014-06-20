@@ -6,9 +6,15 @@ import java.util.Set;
 import ark.data.DataTools;
 import ark.util.Stemmer;
 
-// Inspired by http://web.ist.utl.pt/acardoso/datasets/
-// Also see for suggestions http://qwone.com/~jason/writing/loocv.pdf
-// Only use on unigrams
+/**
+ * TextClassCleanFn represents a text cleaning function inspired by 
+ * http://web.ist.utl.pt/acardoso/datasets/
+ * 
+ * Assumes input string consists of a single unigram.
+ * 
+ * @author Bill McDowell
+ *
+ */
 public class TextClassCleanFn implements DataTools.StringTransform {
 	// FIXME: This should be a gazetteer but I don't have time right now
 	private Set<String> stopWordsSet;
@@ -598,7 +604,7 @@ public class TextClassCleanFn implements DataTools.StringTransform {
 				
 	public String transform(String str) {
 		str = str.trim();
-		str = str.replaceAll("[\\W&&[^\\s]]+", " ") // replaces all non-alpha-numeric (differs from http://qwone.com/~jason/writing/loocv.pdf)
+		str = str.replaceAll("[\\W&&[^\\s]]+", " ") 
 				 .replaceAll("\\d+.*", " ") 
 				 .replaceAll("_", " ")
 				 .trim()

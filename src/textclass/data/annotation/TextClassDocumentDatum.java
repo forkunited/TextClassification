@@ -6,6 +6,16 @@ import ark.data.annotation.Datum;
 import ark.data.annotation.Datum.Tools.LabelMapping;
 import ark.data.annotation.nlp.TokenSpan;
 
+/**
+ * TextClassDocumentDatum represents a single document datum for
+ * a text classification task. The datum consists of a text
+ * document and a label (e.g. a category or topic) assigned 
+ * to the document.
+ * 
+ * @author Bill McDowell
+ *
+ * @param <L> document label type
+ */
 public class TextClassDocumentDatum<L> extends Datum<L> {
 	protected TextClassDocument textClassDocument;
 	
@@ -19,6 +29,11 @@ public class TextClassDocumentDatum<L> extends Datum<L> {
 		return this.textClassDocument;
 	}
 	
+	/**
+	 * @param dataTools
+	 * @return tools for manipulating document datums with category labels
+	 * from the 20newsgroups task
+	 */
 	public static Tools<TextClassDocumentCategory> getCategoryTools(DataTools dataTools) {
 		Tools<TextClassDocumentCategory> tools = new Tools<TextClassDocumentCategory>(dataTools) {
 			@Override
@@ -70,6 +85,11 @@ public class TextClassDocumentDatum<L> extends Datum<L> {
 			
 		};
 		
+		/**
+		 * Maps each category label to a canonical label for its "cluster"--
+		 * where a cluster is defined by the groups given at 
+		 * http://qwone.com/~jason/20Newsgroups/
+		 */
 		tools.addLabelMapping(new LabelMapping<TextClassDocumentCategory>() {
 			@Override
 			public String toString() {
@@ -123,6 +143,11 @@ public class TextClassDocumentDatum<L> extends Datum<L> {
 			}
 		});
 		
+		/**
+		 * Maps each category label to a canonical label for the first level
+		 * of the category hierarchy implicitly defined by the category names
+		 * (X_1.X_2....X_N maps to a canonical category for X_1.
+		 */
 		tools.addLabelMapping(new LabelMapping<TextClassDocumentCategory>() {
 			@Override
 			public String toString() {
@@ -176,6 +201,11 @@ public class TextClassDocumentDatum<L> extends Datum<L> {
 			}
 		});
 		
+		/**
+		 * Maps each category label to a canonical label for the second level
+		 * of the category hierarchy implicitly defined by the category names
+		 * (X_1.X_2....X_N maps to a canonical category for X_1.X_2.
+		 */
 		tools.addLabelMapping(new LabelMapping<TextClassDocumentCategory>() {
 			@Override
 			public String toString() {
@@ -232,6 +262,11 @@ public class TextClassDocumentDatum<L> extends Datum<L> {
 		return tools;
 	}
 	
+	/**
+	 * @param dataTools
+	 * @return tools for manipulating document datums with topic labels
+	 * from the Reuters 21578 task
+	 */
 	public static Tools<TextClassDocumentTopic> getTopicTools(DataTools dataTools) {
 		Tools<TextClassDocumentTopic> tools = new Tools<TextClassDocumentTopic>(dataTools) {
 			@Override
@@ -240,6 +275,11 @@ public class TextClassDocumentDatum<L> extends Datum<L> {
 			}
 		};
 		
+		/**
+		 * Maps each topic to a canonical topic for the set of topics with
+		 * the same term prior to an underscore (X_Y maps to a canonical topic
+		 * for X)
+		 */
 		tools.addLabelMapping(new LabelMapping<TextClassDocumentTopic>() {
 			@Override
 			public String toString() {
@@ -281,6 +321,11 @@ public class TextClassDocumentDatum<L> extends Datum<L> {
 			}
 		});
 		
+		/**
+		 * Maps each topic to a canonical topic for the set of topics with
+		 * the same term after an underscore (X_Y maps to a canonical topic
+		 * for Y)
+		 */
 		tools.addLabelMapping(new LabelMapping<TextClassDocumentTopic>() {
 			@Override
 			public String toString() {
@@ -311,6 +356,13 @@ public class TextClassDocumentDatum<L> extends Datum<L> {
 		return tools;
 	}
 	
+	/**
+	 * Tools for manipulating all document classification datums
+	 * 
+	 * @author Bill McDowell
+	 *
+	 * @param <L> document label
+	 */
 	private static abstract class Tools<L> extends CostDatumTools<TextClassDocumentDatum<L>, L> {
 		public Tools(DataTools dataTools) {
 			super(dataTools);

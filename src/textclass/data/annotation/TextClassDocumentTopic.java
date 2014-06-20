@@ -1,7 +1,15 @@
 package textclass.data.annotation;
 
+/**
+ * TextClassDocumentTopic enumerates categories from the
+ * Reuters-21578 text-classification data set
+ * (see http://www.daviddlewis.com/resources/testcollections/reuters21578/)
+ * (also R52 http://www.csmining.org/index.php/r52-and-r8-of-reuters-21578.html)
+ * 
+ * @author Bill McDowell
+ *
+ */
 public enum TextClassDocumentTopic {
-	// Reuters21578
 	ACQ,            // acq
 	ALUM,           // alum
 	AUSTDLR,        // austdlr

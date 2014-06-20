@@ -17,6 +17,14 @@ import ark.data.annotation.Datum.Tools;
 import ark.experiment.ExperimentGST;
 import ark.util.OutputWriter;
 
+/**
+ * ExperimentGSTTextClassDocumentCategory runs a Reuters-21578 R52
+ * grid-search-test text classification experiment using the 
+ * ARKWater library.
+ * 
+ * @author Bill McDowell
+ * 
+ */
 public class ExperimentGSTTextClassDocumentTopic {
 	private static int textClassDocumentId;
 	

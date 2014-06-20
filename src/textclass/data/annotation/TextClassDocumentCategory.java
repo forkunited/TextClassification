@@ -1,5 +1,13 @@
 package textclass.data.annotation;
 
+/**
+ * TextClassDocumentCategory enumerates categories from the
+ * 20newsgroups text-classification data set
+ * (see http://qwone.com/~jason/20Newsgroups/)
+ * 
+ * @author Bill McDowell
+ *
+ */
 public enum TextClassDocumentCategory {
 	// 20newsgroups
 	COMP_GRAPHICS, //comp.graphics

@@ -24,6 +24,17 @@ import ark.util.MathUtil;
 import textclass.data.annotation.TextClassDocument;
 import textclass.data.annotation.TextClassDocumentSet;
 
+/**
+ * 
+ * ConstructTextClassDocumentsReuters21578 constructs JSON serialized
+ * version of the Reuters-21578 text classification data set 
+ * (see http://www.daviddlewis.com/resources/testcollections/reuters21578/)
+ * that can be loaded through textclass.data.annotation.TextClassDocumentSet
+ * and textclass.data.annotation.TextClassDocument.
+ * 
+ * @author Bill McDowell
+ * 
+ */
 public class ConstructTextClassDocumentsReuters21578 {
 	public static void main(String[] args) {
 		String inputPath = args[0];
