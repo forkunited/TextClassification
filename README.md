@@ -40,7 +40,7 @@ this directory contain the main functions where the code starts running.
 *	*textclass.util* - Miscellaneous utility classes.
 
 *textclass.scratch* contains the entry points for the code. So if you're trying
-to understand how this library uses ARKWater to train and test the extraction
+to understand how this library uses ARKWater to train and test the text classification
 models, you should start by looking at classes in *textclass.scratch*.
 
 The *experiments* directory contains experiment configuration files for 
