@@ -21,8 +21,8 @@ loading them into the ARKWater objects.
 All of the code relies on having tokenized and JSON serialized versions of the
 data sets.  You can generate the JSON serialized data sets by downloading the
 original data from the URLs given above, and then running 
-*textclass.scratch.ConstructTextClassDocuments20NewsGroups" or 
-*textclass.scratch.ConstructTextClassDocumentsReuters21578" on them.
+*textclass.scratch.ConstructTextClassDocuments20NewsGroups* or 
+*textclass.scratch.ConstructTextClassDocumentsReuters21578* on them.
 
 ## Layout of the project ##
 
