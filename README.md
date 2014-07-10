@@ -52,8 +52,10 @@ using ARKWater.
 Before running anything, you need to configure the project for your local 
 setup.  To configure, do the following:
 
-1.  Copy *files/build.xml* and *files/textclass.properties* to the top-level directory
+1. Untar the jars at *files/jars.tgz* into an appropriate location.
+
+2.  Copy *files/build.xml* and *files/textclass.properties* to the top-level directory
 of the project. 
 
-2.  Fill out the copied *textclass.properties* and *build.xml* files with the 
+3.  Fill out the copied *textclass.properties* and *build.xml* files with the 
 appropriate settings by replacing text surrounded by square brackets.
